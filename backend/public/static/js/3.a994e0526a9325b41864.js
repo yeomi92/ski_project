@@ -1,2 +1,0 @@
-webpackJsonp([3],{"6eST":function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var l={name:"MainIndex",created:function(){console.log("main/Index.vue")}},r={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("메인페이지")])},staticRenderFns:[]},i=t("VU/8")(l,r,!1,null,null,null);n.default=i.exports}});
-//# sourceMappingURL=3.a994e0526a9325b41864.js.map

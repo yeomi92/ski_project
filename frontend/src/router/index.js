@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MovieIndexPage from '@/components/MovieIndexPage'
-import MovieShowPage from '@/components/MovieShowPage'
 
 Vue.use(Router)
 
@@ -17,45 +15,40 @@ export default new Router({
     {
       path: '/auth',
       name: 'Auth',
-      component: ()=>import('../components/page/auth/Index'),
+      component: ()=>import('@/components/page/auth/Index'),
       children: [
         {
-          path: '/',
+          path: 'login',
           name: 'AuthLogin',
-          component: ()=>import('../components/page/auth/Login')
+          component: ()=>import('@/components/page/auth/Login')
+        },
+        {
+          path: 'signup',
+          name: 'AuthSignup',
+          component: ()=>import('@/components/page/auth/Signup')
         }
       ]
     },
     {
       path: '/board',
       name: 'Board',
-      component: ()=>import('../components/page/board/Index'),
+      component: ()=>import('@/components/page/board/Index'),
       children: [
         {
           path: 'list/:page',
           name: 'BoardList',
-          component: ()=>import('../components/page/board/TestList'),
+          component: ()=>import('@/components/page/board/TestList'),
           redirectUrl: '/board/list',
           children: [
             {
               path: ':id',
               name: 'BoardDetail',
-              component: ()=>import('../components/page/board/TestDetail')
+              component: ()=>import('@/components/page/board/TestDetail')
             }
           ]
         },
         
       ]
-    },
-    {
-      path: '/movie',
-      name: 'MovieIndexPage',
-      component: MovieIndexPage
-    },
-    {
-      path: '/movie/:id',
-      name: 'MovieShowPage',
-      component: MovieShowPage
     }
   ]
 })

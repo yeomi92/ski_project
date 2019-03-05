@@ -1,2 +1,0 @@
-webpackJsonp([4],{nPay:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r={name:"BoardIndex",created:function(){console.log("board/Index.vue")}},l={render:function(){var e=this.$createElement;return(this._self._c||e)("router-view")},staticRenderFns:[]},o=t("VU/8")(r,l,!1,null,null,null);n.default=o.exports}});
-//# sourceMappingURL=4.bd9b5a3827dc9bfb69b3.js.map

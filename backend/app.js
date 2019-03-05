@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 //vue에 데이터를 전달할 테스트 라우터
 var moviesRouter = require('./routes/movies');
 var boardRouter = require('./routes/board')
+var authRouter = require('./routes/auth')
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/users', usersRouter);
 //
 app.use('/api/movies', moviesRouter);
 app.use('/api/board', boardRouter)
+app.use('/api/auth', authRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
