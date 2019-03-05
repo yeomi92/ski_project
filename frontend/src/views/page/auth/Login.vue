@@ -1,17 +1,17 @@
 <template>
-<div>
-  <b-form inline>
+<div class="div_login">
+  <b-form>
     <label class="sr-only" for="id">id</label>
-    <b-input-group class="mb-2 mr-sm-2 mb-sm-0" prepend="ID" placeholder="Jane Doe">
+    <b-input-group class="mb-2 mr-sm-2 id" prepend="ID">
       <b-input  id="id" placeholder="id" v-model="auth.id"></b-input>
     </b-input-group>
 
     <label class="sr-only" for="password">password</label>
-    <b-input-group prepend="PW" class="mb-2 mr-sm-2 mb-sm-0">
+    <b-input-group prepend="PW" class="mb-2 mr-sm-2">
       <b-input id="password" placeholder="password" v-model="auth.pw"/>
     </b-input-group>
 
-    <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember me</b-form-checkbox>
+    <b-form-checkbox class="mb-2 mr-sm-2">Remember me</b-form-checkbox>
 
     <b-button variant="primary" @click="login">Login</b-button>
   </b-form>
@@ -19,6 +19,7 @@
 </template>
 <script>
 import {mapMutations} from 'vuex'
+import {cookieSetAuthInfo} from '@/utils/auth'
 export default {
   name: "Login",
   data() {
@@ -50,11 +51,9 @@ export default {
           let user = res.data.user
           user.active = true
           this.setAuthInfo(user)
-          alert('로그인 성공')
-          //TODO
-          //cookie에 로그인 정보 저장하기
+          cookieSetAuthInfo(user)
           this.$router.push({
-            name: 'Main'
+            name: 'Home'
           })
         }else{
           alert('로그인 실패')

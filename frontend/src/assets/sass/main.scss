@@ -1,7 +1,10 @@
 @charset 'utf-8';
 
 @import
-    'layout/header.scss';
+    'layout/header.scss',
+    'layout/footer.scss',
+    'layout/popup.scss';
 @import
-    'page/auth.scss',
+'page/common.scss',
+'page/auth.scss',
     'page/board.scss';

@@ -1,5 +1,14 @@
-.haeder{
+#header{
+    margin-bottom: 50px;
+    a{
+        cursor: pointer;
+    }
     .btn_group{
         display: inline-flex;
+        .form-inline:first-child{
+            .btn{
+                margin-right: 10px;
+            }
+        }
     }
 }

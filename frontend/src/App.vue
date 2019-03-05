@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Popup v-if="popupShow"></Popup>
     <Header></Header>
     <router-view/>
     <Footer></Footer>
@@ -7,13 +8,21 @@
 </template>
 
 <script>
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
+import { mapGetters } from 'vuex'
+import Popup from '@/views/layout/Popup';
+import Header from '@/views/layout/Header'
+import Footer from '@/views/layout/Footer'
 export default {
   name: 'App',
   components: {
-    'Header': Header,
-    'Footer': Footer
+    Header,
+    Footer,
+    Popup
+  },
+  computed: {
+    ...mapGetters({
+      popupShow: 'popup/show'
+    })
   }
 }
 </script>

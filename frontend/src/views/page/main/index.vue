@@ -14,8 +14,8 @@ export default {
             authInfo: 'authInfo'
         })
     },
-    created(){
-        console.log('main/Index.vue');
+    created() {
+        console.log('main/Index.vue')
     }
 }
 </script>
