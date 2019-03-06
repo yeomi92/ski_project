@@ -8,4 +8,34 @@
 .div_singup{
     width: 50%;
     margin: 0 auto;
+    .btn_signup{
+        float: right;
+    }
+    .check_msg{
+        font-size: 12px;
+        &.red{
+            color: red;
+        }
+        &.green{
+            color: green;
+        }
+    }
+}
+
+#exampleInputGroup1{
+    >div{
+        position: relative;
+        #exampleInput1{
+            width: 80%;
+        }
+        .btn_check_id{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 18%;
+            button{
+                width: 100%
+            }
+        }
+    }
 }

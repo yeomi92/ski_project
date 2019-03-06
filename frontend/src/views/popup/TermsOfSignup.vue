@@ -5,7 +5,12 @@
 </template>
 <script>
 export default {
-    name: 'TermsOfSignup'
+    name: 'TermsOfSignup',
+    data() {
+        return {
+            checkedAgree: ''
+        }
+    }
 }
 </script>
 <style>

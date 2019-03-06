@@ -15,6 +15,14 @@ router.post('/login', function (req, res, next) {
     res.send(result);
 });
 
+router.post('/check/id',function (req, res, next) {
+    console.log('=======아이디 중복확인=====')
+    let id = req.body.params.id
+    let user = member.filter(m=>m.id===id)
+    let result = !!user[0]
+    res.send(result)
+})
+
 router.post('/signup', function (req, res, next) {
     console.log("========회원가입===========");
     console.log(req)
