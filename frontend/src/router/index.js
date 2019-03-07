@@ -1,7 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store/index'
 
 Vue.use(Router)
+
+const requireAuth = ()=> (to, from, next) => {
+  if(!store.state.authInfo.active){
+    alert('접근방지')
+    return next('/auth/login');
+  }
+  return next();
+}
 
 export default new Router({
   mode: 'history',
@@ -36,7 +45,8 @@ export default new Router({
             {
               path: 'mypage',
               name: 'AuthMypage',
-              component: ()=>import('@/views/page/auth/Mypage')
+              component: ()=>import('@/views/page/auth/Mypage'),
+              beforeEnter: requireAuth()
             }
           ]
         },

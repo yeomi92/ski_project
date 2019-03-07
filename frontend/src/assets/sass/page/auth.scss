@@ -1,8 +1,19 @@
 .div_login{
     width: 30%;
     margin: 0 auto;
+    text-align: center;
     .id .input-group-text{
         padding: 0 16px;
+    }
+    .login_msg{
+        text-align: left;
+        margin: 10px 50px;
+        color: red;
+        font-size:12px;
+    }
+    .btn_login{
+        width: 50%;
+        margin: 0 auto;
     }
 }
 .div_singup{
@@ -37,5 +48,12 @@
                 width: 100%
             }
         }
+    }
+}
+.mypage{
+    width: 60%;
+    margin: 0 auto;
+    .title{
+        margin-bottom: 50px;
     }
 }

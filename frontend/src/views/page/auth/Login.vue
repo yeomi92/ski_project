@@ -8,12 +8,10 @@
 
     <label class="sr-only" for="password">password</label>
     <b-input-group prepend="PW" class="mb-2 mr-sm-2">
-      <b-input id="password" placeholder="password" v-model="auth.pw"/>
+      <b-input id="password" type="password" placeholder="password" v-model="auth.pw"/>
     </b-input-group>
-
-    <b-form-checkbox class="mb-2 mr-sm-2">Remember me</b-form-checkbox>
-
-    <b-button variant="primary" @click="login">Login</b-button>
+    <div class="login_msg">{{loginMsg}}</div>
+    <b-button variant="primary" @click="login" class="btn_login" @keyup.enter="btn_login">Login</b-button>
   </b-form>
 </div>
 </template>
@@ -27,7 +25,8 @@ export default {
       auth: {
         id:'',
         pw:''
-      }
+      },
+      loginMsg: ''
     };
   },
   created() {
@@ -56,7 +55,7 @@ export default {
             name: 'Home'
           })
         }else{
-          alert('로그인 실패')
+          this.loginMsg='id또는 pw가 일치하지 않습니다.'
         }
       })
     }
