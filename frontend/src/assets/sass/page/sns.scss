@@ -1,0 +1,66 @@
+.sns{
+    width: 50%;
+    margin: 0 auto;
+    font-size: 13px;
+    .list{
+        .left_section{
+            float: left;
+            width: 70%;
+        }
+        .right_section{
+            float: left;
+            width: 30%;
+            height: 500px;
+            padding: 5px 15px;
+            .profile{
+                height: 10%;
+                .user{
+                    font-weight: bold;
+                    font-size: 15px;
+                }
+            }
+            .contents{
+                height:65%;
+                overflow: auto;
+                padding: 5px 0px;
+                .comment_list{
+                    .comment{
+                        .comment_user{
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+            .icon_area{
+                height:10%;
+                position: relative;
+                .icons{
+                    top: 50%;
+                    margin-top: -15px;
+                    position: absolute;
+                    left: 0;
+                }
+                .upload_date{
+                    top: 50%;
+                    right: 0;
+                    margin-top: -10px;
+                    position: absolute;
+                }
+            }
+            .comment_area{
+                height:15%;
+                textarea{
+                    float: left;
+                    height: 100%;
+                    resize: none;
+                    width: 75%;
+                }
+                .btn_write{
+                    height:100%;
+                    width: 25%;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}

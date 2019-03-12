@@ -1,2 +1,0 @@
-webpackJsonp([2],{E0mp:function(e,n){},czgP:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r={name:"PageIndex",created:function(){console.log("page/Index.vue")}},c={render:function(){var e=this.$createElement,n=this._self._c||e;return n("div",{attrs:{id:"container"}},[n("router-view")],1)},staticRenderFns:[]};var a=t("VU/8")(r,c,!1,function(e){t("E0mp")},null,null);n.default=a.exports}});
-//# sourceMappingURL=2.e278128c96e4559b046a.js.map

@@ -7,6 +7,9 @@
         <li class="nav-item">
           <a class="nav-link" @click="goBoard">board</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" @click="goTwitter">twitter</a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">test</a>
         </li> -->
@@ -73,6 +76,12 @@ export default {
           page: 1
         }
         //query: { type: 'menu' }
+      });
+    },
+    goTwitter() {
+      console.log("Twitter클릭");
+      this.$router.push({
+        name: "TwitterList"
       });
     },
     goLogin() {

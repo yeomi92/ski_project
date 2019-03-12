@@ -5,11 +5,11 @@ import store from '@/store/index'
 Vue.use(Router)
 
 const requireAuth = ()=> (to, from, next) => {
-  if(!store.state.authInfo.active){
-    alert('접근방지')
-    return next('/auth/login');
+  if(store.state.authInfo.active){
+    return next();
   }
-  return next();
+  alert('접근방지')
+  next(('/auth/login'));
 }
 
 export default new Router({
@@ -69,6 +69,18 @@ export default new Router({
               ]
             },
             
+          ]
+        },
+        {
+          path: '/twitter',
+          name: 'Twitter',
+          component: ()=>import('@/views/page/sns/Index'),
+          children: [
+            {
+              path: 'list',
+              name: 'TwitterList',
+              component: ()=>import('@/views/page/sns/List')
+            }
           ]
         }
       ]
