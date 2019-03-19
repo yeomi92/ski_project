@@ -72,14 +72,24 @@ export default new Router({
           ]
         },
         {
-          path: '/twitter',
-          name: 'Twitter',
+          path: '/sns',
+          name: 'Sns',
           component: ()=>import('@/views/page/sns/Index'),
           children: [
             {
               path: 'list',
-              name: 'TwitterList',
+              name: 'SnsList',
               component: ()=>import('@/views/page/sns/List')
+            },
+            {
+              path: 'post/:id',
+              name: 'SnsDetail',
+              component: ()=>import('@/views/page/sns/Detail')
+            },
+            {
+              path: 'writing',
+              name: 'SnsWriting',
+              component: ()=>import('@/views/page/sns/Writing')
             }
           ]
         }

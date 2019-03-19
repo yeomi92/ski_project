@@ -1,0 +1,25 @@
+.div_paging{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    text-align: center;
+    .inner_div{
+        display: inline-block;
+        ul{
+            display: flex;
+            font-weight: 600;
+            .page-item{
+                width: 25px;
+                padding: 2px;
+                &.current-page{
+                    background-color: palevioletred;
+                    border-radius: 15px;
+                    a{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    
+}

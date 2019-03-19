@@ -1,0 +1,17 @@
+.div_button{
+    input[type=button]{
+        margin: 0 10px 0 0;
+        padding: 10px 0;
+        border: none;
+        background-color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        &.pink{
+            &:hover{
+                background-color: palevioletred;
+                color: white;
+            }
+        }
+        
+    }
+}

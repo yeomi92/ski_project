@@ -37,25 +37,25 @@
     },
     {
         "id": "cmt7",
-        "post_id":"post1",
+        "post_id":"post2",
         "author": "user3",
         "content": "유럽 여행지 추천받아요~! 너무 즐거워 보여요^^ 소통해요~ㅎㅎ 예쁜 사진 많이 올려주세요~ ㅎㅎ"
     },
     {
         "id": "cmt8",
-        "post_id":"post1",
+        "post_id":"post2",
         "author": "user2",
         "content": "유럽 여행지 추천받아요~! 너무 즐거워 보여요^^ 소통해요~ㅎㅎ 예쁜 사진 많이 올려주세요~ ㅎㅎ"
     },
     {
         "id": "cmt9",
-        "post_id":"post1",
+        "post_id":"post2",
         "author": "user2",
         "content": "유럽 여행지 추천받아요~! 너무 즐거워 보여요^^ 소통해요~ㅎㅎ 예쁜 사진 많이 올려주세요~ ㅎㅎ"
     },
     {
         "id": "cmt10",
-        "post_id":"post1",
+        "post_id":"post2",
         "author": "user1",
         "content": "유럽 여행지 추천받아요~! 너무 즐거워 보여요^^ 소통해요~ㅎㅎ 예쁜 사진 많이 올려주세요~ ㅎㅎ"
     }

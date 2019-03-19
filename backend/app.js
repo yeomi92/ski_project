@@ -1,5 +1,11 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
+
+//db추가
+var mongoose = require('mongoose')
+var bodyParser= require('body-parser')
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -13,6 +19,17 @@ var authRouter = require('./routes/auth');
 var snsRouter = require('./routes/sns');
 
 var app = express();
+
+//db추가
+var port=process.env.PORT || 4500
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true})
+.then(()=>console.log('Successfully connected to mongodb'))
+.catch(e=>console.log(e));
+//app.listen(port, ()=>console.log(`Server listening on port ${port}`))
 
 //vue router와 express연동을 위한 모듈 등록
 app.use(require('connect-history-api-fallback')());

@@ -1,7 +1,14 @@
+$footer-height: 45px;
 .footer{
+    background: #db709378;
+    text-align: right;
+    height: $footer-height;
+    bottom: 0;
+    width: 100%;
+    line-height: $footer-height;
     .email{
         margin: 0 50px;
         text-decoration: none;
-        color: black;
+        color: white;
     }
 }

@@ -1,9 +1,11 @@
 <template>
-    <div class="outer_div">
+    <div class="div_paging">
         <div class="inner_div">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><</a>
+                    </li>
                     <li class="page-item"
                         v-for="(num, index) in startNum"
                         v-if="pagingRangeCheck(num, index)"
@@ -13,7 +15,9 @@
                     >
                         <a class="page-link" href="#">{{num}}</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">></a>
+                    </li>
                 </ul>
             </nav>
         </div>

@@ -1,8 +1,25 @@
 .sns{
-    width: 50%;
+    .post_list{
+        .post{
+            margin: 20px 0px;
+            >div{
+                text-align: center;
+                .profile{
+
+                }
+                .thumbnail{
+                    img{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    .post_detail{
+    width: 900px;
+    height: 900px;
     margin: 0 auto;
     font-size: 13px;
-    .list{
         .left_section{
             float: left;
             width: 70%;
@@ -60,6 +77,13 @@
                     width: 25%;
                     font-size: 13px;
                 }
+            }
+        }
+        .btn_goList{
+            text-align: center;
+            button{
+                margin-top: 50px;
+                width: 150px;
             }
         }
     }

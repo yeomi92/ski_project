@@ -44,10 +44,10 @@ export default {
     },
     methods: {
         getContent(){
-            var id = this.$route.params.id;
+            let id = this.$route.params.id;
             this.$http.get(`/api/board/detail/${id}`)
-            .then((response) => {
-                this.content = response.data;
+            .then((res) => {
+                this.content = res.data;
             });
         }
     }

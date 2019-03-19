@@ -1,0 +1,31 @@
+$column-height: 40px;
+$list-height: $column-height*12;
+
+.list{
+    display: flex;
+    flex-direction: column;
+    min-height: $list-height;
+    .list_head{
+        border-bottom: 2px solid palevioletred;
+        font-weight: bold;
+        background-color: #db709378;
+        color: white;
+        line-height: $column-height;
+    }
+    .list_body{
+        line-height: $column-height;
+        .list_tr:hover{
+            background-color: #80808040;
+            font-weight: bold;
+        }
+    }
+    .list_tr{
+        display: flex;
+        //justify-content: space-between;
+        height: $column-height;
+    }
+    .list_no {
+        width:50px;
+        text-align: center;
+    }
+}

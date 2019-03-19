@@ -1,3 +1,52 @@
+.div_signin{
+    display: flex;
+    //justify-content: center;
+    flex-direction: column;
+    p{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+        label{
+            width: 110px;
+            text-align: right;
+            margin-right: 20px;
+            padding: 5px;
+        }
+        input[type=text],input[type=password]{
+            border: none;
+            border-bottom: 1px solid #666;
+            padding: 5px;
+            &:focus{
+                border-bottom: 1px solid palevioletred;
+                outline: none;
+            }
+        }
+        input[type=button]{
+            border: none;
+            width:200px;
+            padding: 10px 0;
+            border-radius: 10px;
+            background-color: palevioletred;
+            color: white;
+            margin-left: 135px;
+            cursor: pointer;
+            &:hover{
+                background-color: #db7093c7;
+            }
+            &:focus{
+                outline: none;
+            }
+        }
+        span{
+            width: 200px;
+            height: 16px;
+            margin-left: 145px;
+            font-size: 12px;
+            color: red;
+        }
+    }
+}
+
 .div_login{
     width: 30%;
     margin: 0 auto;

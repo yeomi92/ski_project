@@ -1,13 +1,58 @@
+// #header{
+//     a{
+//         cursor: pointer;
+//     }
+//     .btn_group{
+//         display: inline-flex;
+//         .form-inline:first-child{
+//             .btn{
+//                 margin-right: 10px;
+//             }
+//         }
+//     }
+// }
+
 #header{
-    margin-bottom: 50px;
-    a{
-        cursor: pointer;
-    }
-    .btn_group{
-        display: inline-flex;
-        .form-inline:first-child{
-            .btn{
-                margin-right: 10px;
+    //background-color: pink;
+    height: 50px;
+    .nav{
+        display: flex;
+        width: 100%;
+        line-height: 50px;
+        
+        .menus{
+            width: 50%;
+            display: flex;
+            justify-content: flex-start;
+            font-size: 18px;
+            .menu{
+                padding: 0 20px;
+                cursor: pointer;
+                cursor: pointer;
+                &:hover, &.active{
+                    color: white;
+                    background: palevioletred;
+                }
+            }
+        }
+        .buttons{
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 15px;
+            .button{
+                input[type=button]{
+                    margin: 0 10px 0 0;
+                    padding: 10px 13px;
+                    border: none;
+                    background-color: white;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: palevioletred;
+                        color: white;
+                    }
+                }
             }
         }
     }

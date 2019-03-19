@@ -3,12 +3,14 @@ import Vuex from 'vuex'
 import router from '../router'
 
 import popup from './modules/layout/popup'
+import sns from './modules/page/sns'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        popup
+        popup,
+        sns
     },
     state: {
         authInfo: {

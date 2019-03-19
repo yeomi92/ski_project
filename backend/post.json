@@ -3,43 +3,71 @@
         "id":"post1",
         "author":"user1",
         "date":"2019-03-12",
-        "content":"#유럽 #유럽여행 #폴란드 #바르샤바 <br> 여행은 언제나 즐거워~^^",
-        "photo":"@/assets/img/photo/photo1.jpeg"
+        "content":"#유럽 #유럽여행 #폴란드 #바르샤바 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo1.jpeg"
     },
     {
         "id":"post2",
         "author":"user1",
         "date":"2019-03-11",
-        "content":"#유럽 #유럽여행 #이탈리아 #로마 <br> 여행은 언제나 즐거워~^^",
-        "photo":"@/assets/img/photo/photo1.jpeg"
+        "content":"#유럽 #유럽여행 #이탈리아 #로마 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo2.jpeg"
     },
     {
         "id":"post3",
         "author":"user2",
         "date":"2019-03-10",
-        "content":"#유럽 #유럽여행 #헝가리 #부다페스트 <br> 여행은 언제나 즐거워~^^",
-        "photo":"@/assets/img/photo/photo1.jpeg"
+        "content":"#유럽 #유럽여행 #헝가리 #부다페스트 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo3.jpeg"
     },
     {
         "id":"post4",
         "author":"user3",
         "date":"2019-03-09",
-        "content":"#유럽 #유럽여행 #러시아 #블라디보스토크 <br> 여행은 언제나 즐거워~^^",
-        "photo":"@/assets/img/photo/photo1.jpeg"
+        "content":"#유럽 #유럽여행 #러시아 #블라디보스토크 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo4.jpeg"
     },
     {
         "id":"post5",
         "author":"user3",
         "date":"2019-03-08",
-        "content":"#유럽 #유럽여행 #이탈리아 #베니스 #베네치아 <br> 여행은 언제나 즐거워~^^",
-        "photo":"@/assets/img/photo/photo1.jpeg"
+        "content":"#유럽 #유럽여행 #이탈리아 #베니스 #베네치아 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo5.jpeg"
     },
     {
         "id":"post6",
         "author":"user4",
         "date":"2019-03-07",
-        "content":"#유럽 #유럽여행 #스위스 #취리히 <br> 여행은 언제나 즐거워~^^",
-        "photo":"@/assets/img/photo/photo1.jpeg"
+        "content":"#유럽 #유럽여행 #스위스 #취리히 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo6.jpeg"
+    },
+    {
+        "id":"post7",
+        "author":"user4",
+        "date":"2019-03-07",
+        "content":"#유럽 #유럽여행 #포르투갈 #리스본 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo7.jpeg"
+    },
+    {
+        "id":"post8",
+        "author":"user4",
+        "date":"2019-03-07",
+        "content":"#유럽 #유럽여행 #오스트리아 #빈 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo8.jpeg"
+    },
+    {
+        "id":"post9",
+        "author":"user4",
+        "date":"2019-03-07",
+        "content":"#유럽 #유럽여행 #스페인 #바르셀로나 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo9.jpeg"
+    },
+    {
+        "id":"post10",
+        "author":"user4",
+        "date":"2019-03-07",
+        "content":"#유럽 #유럽여행 #이탈리아 #밀라노 \n 여행은 언제나 즐거워~^^",
+        "photo":"photo10.jpeg"
     }
     
 ]

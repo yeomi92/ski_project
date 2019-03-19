@@ -15,12 +15,16 @@ router.get('/list', function (req, res, next) {
     res.send(posts)
 });
 
-// router.get('/detail/:id', function (req, res, next) {
-//   let id = parseInt(req.params.id, 10);
-//   console.log("========게시글=========== id:"+ id);
-//   let content = board.list.filter(x=>x.id === id);
-//   console.dir(content);
-//   res.send(content)
-// });
+router.get('/detail/:id', function (req, res, next) {
+  //let id = parseInt(req.params.id, 10);
+  let id = req.params.id
+  console.log("========게시글=========== id:"+ id);
+  let content = posts.filter(x=>x.id === id);
+  let comment = comments.filter(x=>x.post_id === id)
+  let result = new Object()
+  result.post = content;
+  result.comment = comment;
+  res.send(result)
+});
 
 module.exports = router;

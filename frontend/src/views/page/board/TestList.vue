@@ -4,26 +4,14 @@
     <serach-input
         :search="search"
     />
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                <th scope="col">No.</th>
-                <th scope="col">Title</th>
-                <th scope="col">Content</th>
-                <th scope="col">Auth</th>
-                <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(item,index) in list" :key="item.id" @click="goDetail(item)">
-                <th scope="row">{{startNo-index}}</th>
-                <td>{{item.title}}</td>
-                <td>{{item.content}}</td>
-                <td>{{item.auth}}</td>
-                <td>{{item.date}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <list
+            :width="width"
+            :align="align"
+            :headList="headList"
+            :bodyList="list"
+            :cellFilters="cellFilters"
+            :startNo="startNo"
+        ></list>
         <paging
             v-if="list.length > 0"
             :page_num="pagingData.page_num"
@@ -36,12 +24,14 @@
 </template>
 <script>
 import SearchInput from '@/components/ui/SearchInput'
+import List from '@/components/ui/List'
 import Paging from '@/components/ui/Paging'
 export default {
     name: 'BoardList',
     components: {
         'serach-input': SearchInput,
-        'paging': Paging
+        'paging': Paging,
+        List
     },
     data(){
         return {
@@ -65,7 +55,21 @@ export default {
                     { value: 'content', text: 'Content' },
                     { value: 'auth', text: 'Auth' }
                 ]
-            }
+            },
+            width: [20,30,30,20],
+            align: ['center','center','center','center'],
+            headList: [
+                {text:'Title'},
+                {text:'Content'},
+                {text:'Author'},
+                {text:'Date'}
+            ],
+            cellFilters: [
+                {key:'title'},
+                {key:'content'},
+                {key:'id'},
+                {key:'title'}
+            ]
         }
     },
     watch: {
@@ -102,10 +106,12 @@ export default {
     },
     methods: {
         getList(){
+            console.log('getList()')
             let page = this.$route.params.page;
             this.$http.get(`/api/board/${page}`)
             .then((response)=>{
                 let data=response.data;
+                console.log(data.list)
                 this.list=data.list;
                 this.pagingData.total_cnt = data.total;
                 this.pagingData.total_page_num = Math.ceil(data.total/10);

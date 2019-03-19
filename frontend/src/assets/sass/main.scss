@@ -1,11 +1,18 @@
 @charset 'utf-8';
 
 @import
+    'app.scss';
+@import
     'layout/header.scss',
     'layout/footer.scss',
     'layout/popup.scss';
 @import
-'page/common.scss',
-'page/auth.scss',
+    'page/common.scss',
+    'page/auth.scss',
     'page/board.scss',
     'page/sns.scss';
+@import
+    'ui/searchInput.scss',
+    'ui/inputButton.scss',
+    'ui/paging.scss',
+    'ui/list.scss';

@@ -1,18 +1,19 @@
 <template>
-<div class="div_login">
-  <b-form>
-    <label class="sr-only" for="id">id</label>
-    <b-input-group class="mb-2 mr-sm-2 id" prepend="ID">
-      <b-input  id="id" placeholder="id" v-model="auth.id"></b-input>
-    </b-input-group>
-
-    <label class="sr-only" for="password">password</label>
-    <b-input-group prepend="PW" class="mb-2 mr-sm-2">
-      <b-input id="password" type="password" placeholder="password" v-model="auth.pw"/>
-    </b-input-group>
-    <div class="login_msg">{{loginMsg}}</div>
-    <b-button variant="primary" @click="login" class="btn_login" @keyup.enter="btn_login">Login</b-button>
-  </b-form>
+<div class="div_signin">
+  <p>
+    <label for="user_id">User ID</label>
+    <input type="text" id="user_id" placeholder="" v-model="auth.id">
+  </p>
+  <p>
+    <label for="user_pw">User Password</label>
+    <input type="password" id="user_pw" placeholder="" v-model="auth.pw">
+  </p>
+  <p>
+    <span>{{loginMsg}}</span>
+  </p>
+  <p>
+    <input type="button" value="Sign in" @click="login">
+  </p>
 </div>
 </template>
 <script>
