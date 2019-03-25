@@ -1,5 +1,6 @@
 #container{
-    width: 90%;
-    margin: 50px auto;
-    min-height: 700px;
+    display: flex;
+    justify-content: center;
+    padding: 100px 0px; 
+    min-height: 600px;
 }

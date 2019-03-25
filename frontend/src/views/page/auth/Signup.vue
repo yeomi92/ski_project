@@ -1,78 +1,63 @@
 <template>
-  <div class="div_singup">
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group id="exampleInputGroup1" label="아이디:" label-for="exampleInput1">
-        <b-form-input id="exampleInput1" type="text" v-model="form.id" required placeholder="id"/>
-        <!-- <input class="form-control btn_check_id" type="button" v-model="form.checkId" value="중복확인"/> -->
-        <form class="form-inline my-2 my-lg-0 btn_check_id"><button type="button" class="btn btn-outline-success my-2 my-sm-0" @click="checkId">중복확인</button></form>
-        <span class="check_msg" :class="id?'green':'red'">{{idMsg}}</span>
-      </b-form-group>
-
-      <b-form-group id="exampleInputGroup2" label="비밀번호:" label-for="exampleInput2">
-        <b-form-input
-          id="exampleInput2"
-          type="password"
-          v-model="form.pw"
-          required
-          placeholder="비밀번호"
-        />
-      </b-form-group>
-
-      <b-form-group id="exampleInputGroup3" label="비밀번호 확인:" label-for="exampleInput3">
-        <b-form-input
-          id="exampleInput3"
-          type="password"
-          v-model="form.checkPw"
-          required
-          placeholder="비밀번호"
-        />
-        <span class="check_msg" :class="pw?'green':'red'">{{pwMsg}}</span>
-      </b-form-group>
-
-      <b-form-group id="exampleInputGroup4" label="이름:" label-for="exampleInput4">
-        <b-form-input id="exampleInput4" type="text" v-model="form.name" required placeholder="이름"/>
-      </b-form-group>
-      <b-form-group id="exampleInputGroup5" label="Email 주소:" label-for="exampleInput5">
-        <b-form-input
-          id="exampleInput5"
-          type="email"
-          v-model="form.email"
-          required
-          placeholder="email"
-        />
-      </b-form-group>
-
-      <b-form-group id="exampleInputGroup6" label="성별:" label-for="exampleInput6">
-        <b-form-select id="exampleInput6" :options="genderList" required v-model="form.gender"/>
-      </b-form-group>
-      
-      <input type="checkbox" id="agree" v-model="form.checkedAgree" required>
-      <label for="agree">약관 동의</label>
-
-      <b-button variant="danger" @click="popup">약관</b-button>
-
-      <b-button class="btn_signup" type="submit" variant="primary">가입하기</b-button>
-    </b-form>
+  <div class="div_signup">
+    <div class="no_margin">
+      <label for="signup_id">id</label>
+      <input id="signup_id" type="text" placeholder="id" v-model="form.id">
+      <input type="button" value="중복확인" class="btn_check_id" @click="checkId">
+    </div>
+    <p>
+      <span :class="`${id?`green`:`red`}`">{{idMsg}}</span>
+    </p>
+    <div>
+      <label for="signup_pw">password</label>
+      <input id="signup_pw" type="password" placeholder="password" v-model="form.pw">
+    </div>
+    <div class="no_margin">
+      <label for="signup_check_pw">password 확인</label>
+      <input id="signup_check_pw" type="password" placeholder="again password" v-model="form.checkPw">
+    </div>
+    <p>
+      <span :class="`${pw?`green`:`red`}`">{{pwMsg}}</span>
+    </p>
+    <div>
+      <label for="signup_name">name</label>
+      <input id="signup_name" type="text" placeholder="name" v-model="form.name">
+    </div>
+    <div>
+      <label for="signup_nickname">nickname</label>
+      <input id="signup_nickname" type="text" placeholder="nickname" v-model="form.nickname">
+    </div>
+    <div>
+      <label for="signup_email">email</label>
+      <input id="signup_email" type="text" placeholder="email" v-model="form.email">
+    </div>
+    <div class="div_agree">
+      <input type="button" value="약관" @click="popup" class="btn_terms"/>
+      <input ic="signup_agree" type="checkbox" v-model="form.checkedAgree">
+      <label for="signup_agree" class="label_agree">동의</label>
+    </div>
+    <div>
+      <input type="button" value="가입" @click="signUp" class="btn_signup"/>
+    </div>
   </div>
 </template>
 <script>
 import {mapMutations} from 'vuex'
 export default {
-  name: "Login",
+  name: 'Login',
   data() {
     return {
       form: {
-        id: "",
-        pw: "",
-        checkPw: "",
-        email: "",
-        name: "",
-        gender: null,
-        checkedAgree: ''
+        id: '',
+        pw: '',
+        checkPw: '',
+        email: '',
+        name: '',
+        nickname: '',
+        checkedAgree: false
       },
       id: null,
       pw: false,
-      genderList: [{ text: "선택", value: null }, "여자", "남자"],
       show: true
     };
   },
@@ -111,33 +96,6 @@ export default {
     ...mapMutations({
       popupShow: 'popup/show'
     }),
-    onSubmit(evt) {
-      evt.preventDefault();
-      if(!this.id){
-        alert('아이디 중복확인을 하세요')
-      }else if(!this.pw){
-        alert('비밀번호를 하세요')
-      }else if(this.id&&this.pw){
-        //alert(JSON.stringify(this.form));
-        alert('가입을 축하드립니다.')
-        this.$router.push({
-          name: 'AuthLogin'
-        })
-      }
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      /* Reset our form values */
-      this.form.email = "";
-      this.form.name = "";
-      this.form.food = null;
-      this.form.checked = [];
-      /* Trick to reset/clear native browser form validation state */
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
-    },
     popup() {
       console.log('약관 클릭')
       this.popupShow({
@@ -146,13 +104,44 @@ export default {
       });
     },
     checkId() {
+      console.log('아이디 중복체크')
       const params = {params: {
         id: this.form.id
       }}
       this.$http.post('/api/auth/check/id', params)
       .then((res)=>{
-        this.id=!res.data
+        this.id=!res.data.result
       })
+    },
+    signUp() {
+      if(!this.id){
+        alert('아이디 중복확인을 하세요')
+      }else if(!this.pw){
+        alert('비밀번호를 확인하세요')
+      } else if(!this.checkedAgree){
+        alert('약관을 동의하세요.')
+      }else if(this.id&&this.pw){
+        const params = {
+          params: {
+            id: this.form.id,
+            password: this.form.pw,
+            name: this.form.name,
+            nickname: this.form.nickname,
+            email: this.form.email
+          }
+        }
+        console.log(params)
+        this.$http.post('/api/auth/signup', params)
+        .then((res)=>{
+          alert('가입을 축하드립니다.')
+          console.log(res)
+          this.$router.push({
+            name: 'AuthLogin'
+          })
+
+        })
+      }
+      
     }
   }
 };

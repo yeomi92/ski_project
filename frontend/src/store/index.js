@@ -17,7 +17,9 @@ export default new Vuex.Store({
             active: false,
             id: null,
             name: null,
-            email: null
+            email: null,
+            nickName: null,
+            createDate: null
         }
     },
     getters: {
@@ -29,12 +31,17 @@ export default new Vuex.Store({
             state.authInfo.id = payload.id
             state.authInfo.name = payload.name
             state.authInfo.email = payload.email
+            state.authInfo.nickName = payload.nickname
+            state.authInfo.createDate = payload.create_date
+            
         },
         clearAuthInfo(state) {
             state.authInfo.active = false,
             state.authInfo.id = null,
             state.authInfo.name = null,
-            state.authInfo.email = null
+            state.authInfo.email = null,
+            state.authInfo.nickName = null
+            state.authInfo.createDate = null
         }
     }
 })

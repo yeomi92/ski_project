@@ -1,8 +1,7 @@
 .div_signin{
     display: flex;
-    //justify-content: center;
     flex-direction: column;
-    p{
+    div{
         display: flex;
         justify-content: center;
         margin-bottom: 15px;
@@ -47,38 +46,83 @@
     }
 }
 
-.div_login{
-    width: 30%;
-    margin: 0 auto;
-    text-align: center;
-    .id .input-group-text{
-        padding: 0 16px;
-    }
-    .login_msg{
-        text-align: left;
-        margin: 10px 50px;
-        color: red;
-        font-size:12px;
-    }
-    .btn_login{
-        width: 50%;
-        margin: 0 auto;
-    }
-}
-.div_singup{
-    width: 50%;
-    margin: 0 auto;
-    .btn_signup{
-        float: right;
-    }
-    .check_msg{
-        font-size: 12px;
-        &.red{
-            color: red;
+.div_signup{
+    display: flex;
+    flex-direction: column;
+    div{
+        display: flex;
+        //justify-content: center;
+        margin-bottom: 30px;
+        label{
+            width: 110px;
+            text-align: right;
+            margin-right: 20px;
+            padding: 5px;
+            &.label_agree{
+                width: auto;
+                margin: 0px;
+                line-height: 40px;
+            }
         }
-        &.green{
-            color: green;
+        input[type=text],input[type=password]{
+            border: none;
+            border-bottom: 1px solid #666;
+            padding: 5px;
+            &:focus{
+                border-bottom: 1px solid palevioletred;
+                outline: none;
+            }
         }
+        input[type=button]{
+            border: none;
+            padding: 10px 0;
+            border-radius: 10px;
+            background-color: palevioletred;
+            color: white;
+            //margin-left: 135px;
+            cursor: pointer;
+            &:hover{
+                background-color: #db7093c7;
+            }
+            &:focus{
+                outline: none;
+            }
+            &.btn_check_id{
+                width: 100px;
+                margin-left: 20px;
+            }
+            &.btn_terms{
+                width: 80px;
+            }
+            &.btn_signup{
+                width: 200px;
+            }
+        }
+        input[type=checkbox]{
+            margin-left: 20px;
+            height: 50px;
+        }
+        &.div_agree{
+            justify-content: flex-end;
+        }
+    }
+    .no_margin{
+        margin-bottom: 0px;
+    }
+    p{
+        height: 30px;
+        line-height: 30px;
+        span{
+            margin-left: 145px;
+            font-size: 12px;
+            &.red{
+                color: red;
+            }
+            &.green{
+                color: green;
+            }
+        }
+        
     }
 }
 
@@ -100,9 +144,50 @@
     }
 }
 .mypage{
-    width: 60%;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
     .title{
         margin-bottom: 50px;
+    }
+    .mypage_list{
+        >div{
+            display: flex;
+            height: 50px;
+            div{
+                width: 30%;
+                text-align: center;
+                line-height: 50px;
+            }
+            .list_body{
+                input:read-only{
+                    border: none;
+                    text-align: center;
+                    outline: none;
+                }
+                input[type=text]{
+                    height: 30px;
+                    padding-left: 10px;
+                }
+            }
+            .btn_modify{
+                input[type=button]{
+                    border: none;
+                    width:50px;
+                    padding: 10px 0;
+                    border-radius: 10px;
+                    background-color: palevioletred;
+                    color: white;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: #db7093c7;
+                    }
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+        }
+        
     }
 }

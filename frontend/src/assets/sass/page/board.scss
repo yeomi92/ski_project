@@ -1,7 +1,9 @@
 @charset 'utf-8';
 .board{
+    width: 100%;
+    min-width: 600px;
+    margin: 0px 100px;
     .list_table{
-        margin: 10px 100px;
     }
     .detail_table{
         margin-top: 20px;
