@@ -105,13 +105,17 @@ export default {
     },
     checkId() {
       console.log('아이디 중복체크')
-      const params = {params: {
-        id: this.form.id
-      }}
-      this.$http.post('/api/auth/check/id', params)
-      .then((res)=>{
-        this.id=!res.data.result
-      })
+      if(!!this.form.id){
+        const params = {params: {
+          id: this.form.id
+        }}
+        this.$http.post('/api/auth/check/id', params)
+        .then((res)=>{
+          this.id=!res.data.result
+        })
+      }else{
+        alert('아이디를 입력하세요.')
+      }
     },
     signUp() {
       if(!this.id){

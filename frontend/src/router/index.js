@@ -1,15 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store/index'
+import {isLogined} from '@/utils/auth'
 
 Vue.use(Router)
 
 const requireAuth = ()=> (to, from, next) => {
-  if(store.state.authInfo.active){
+  console.log(store.state)
+  if(isLogined()){
     return next();
+  }else{
+    alert('접근방지')
+    next(('/auth/login'));
   }
-  alert('접근방지')
-  next(('/auth/login'));
 }
 
 export default new Router({

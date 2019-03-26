@@ -4,15 +4,12 @@ const KEYS = [
     'id',
     'name',
     'email',
-    'active'
+    'active',
+    'create_date',
+    'nickname'
 ]
 
 export function cookieSetAuthInfo (authInfo) {
-    // let cookieConfig = {
-    //     path: '/',
-    //     domain: DOMAIN,
-    //     secure: false
-    // }
     console.log(authInfo)
     KEYS.forEach(KEY => {
         Cookies.set(KEY, authInfo[KEY])

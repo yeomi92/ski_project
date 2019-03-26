@@ -18,8 +18,8 @@ export default new Vuex.Store({
             id: null,
             name: null,
             email: null,
-            nickName: null,
-            createDate: null
+            nickname: null,
+            create_date: null
         }
     },
     getters: {
@@ -27,12 +27,13 @@ export default new Vuex.Store({
     },
     mutations: {
         setAuthInfo(state, payload) {
+            console.log(payload)
             state.authInfo.active = true
             state.authInfo.id = payload.id
             state.authInfo.name = payload.name
             state.authInfo.email = payload.email
-            state.authInfo.nickName = payload.nickname
-            state.authInfo.createDate = payload.create_date
+            state.authInfo.nickname = payload.nickname
+            state.authInfo.create_date = payload.create_date
             
         },
         clearAuthInfo(state) {
@@ -40,8 +41,8 @@ export default new Vuex.Store({
             state.authInfo.id = null,
             state.authInfo.name = null,
             state.authInfo.email = null,
-            state.authInfo.nickName = null
-            state.authInfo.createDate = null
+            state.authInfo.nickname = null
+            state.authInfo.create_date = null
         }
     }
 })

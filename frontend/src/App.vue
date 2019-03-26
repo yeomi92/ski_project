@@ -8,10 +8,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import Popup from '@/views/layout/Popup';
 import Header from '@/views/layout/Header'
 import Footer from '@/views/layout/Footer'
+import { cookieGetAuthInfo, isLogined } from '@/utils/auth'
 export default {
   name: 'App',
   components: {
@@ -19,9 +20,19 @@ export default {
     Footer,
     Popup
   },
+  created () {
+    if(isLogined()){
+      this.setAuthInfo(cookieGetAuthInfo())
+    }
+  },
   computed: {
     ...mapGetters({
       popupShow: 'popup/show'
+    })
+  },
+  methods: {
+    ...mapMutations({
+      setAuthInfo: 'setAuthInfo'
     })
   }
 }

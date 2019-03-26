@@ -58,9 +58,10 @@ export default {
   created() {
     console.log(this.$route)
     console.log("layout/Header.vue");
-    if(isLogined()){
-      this.setAuthInfo(cookieGetAuthInfo())
-    }
+    // if(isLogined()){
+    //   this.setAuthInfo(cookieGetAuthInfo())
+    // }
+    
     // TODO
     // 새로고침 경우 active 유지해야함
     // this.menus.map((i)=>{

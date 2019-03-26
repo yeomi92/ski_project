@@ -25,10 +25,13 @@ router.post('/login', function (req, res, next) {
 router.post('/check/id',function (req, res, next) {
     console.log('=======아이디 중복확인=====')
     console.log(req.body.params.id)
-    // let user = member.filter(m=>m.id===id)
-    // let result = !!user[0]
-    // res.send(result)
-    c
+    User.findOne({
+        id: req.body.params.id
+    }, function(err, user){
+        if(err) return res.status(500).json({err: err});
+        if(!user) return res.json({result: false});
+        res.json({user, result: true});
+    })
 })
 
 router.post('/signup', function (req, res, next) {
@@ -57,20 +60,17 @@ router.post('/signup', function (req, res, next) {
     });
 });
 
-router.post('/update', function (req, res, next) {
+router.put('/update/:id', function (req, res, next) {
     console.log('========정보 업데이트===========');
-    console.log(data)
-    User.update({
-        id: req.body.params.id
-    }, {
-        $set: { req.body.params.name: req.body.params.data}
-    }, function(err, user){
+    console.log(req.body);
+    console.log(req.params.id);
+    User.updateOne(
+        {id: req.params.id}, 
+        {$set: req.body}
+        , function(err, user){
         if(err) return res.status(500).json({err: err});
         if(!user) {
             return res.json({result: false});
-        }
-        else{
-            
         }
         res.json({user, result: true});
     })
