@@ -61,17 +61,21 @@ export default new Router({
             {
               path: 'list/:page',
               name: 'BoardList',
-              component: ()=>import('@/views/page/board/TestList'),
+              component: ()=>import('@/views/page/board/BoardList'),
               redirectUrl: '/board/list',
               children: [
                 {
                   path: ':id',
                   name: 'BoardDetail',
-                  component: ()=>import('@/views/page/board/TestDetail')
+                  component: ()=>import('@/views/page/board/BoardDetail')
                 }
               ]
             },
-            
+            {
+              path: 'writing',
+              name: 'BoardWriting',
+              component: ()=>import('@/views/page/board/Writing')
+            }
           ]
         },
         {

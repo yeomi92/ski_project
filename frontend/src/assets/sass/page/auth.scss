@@ -73,37 +73,15 @@
                 outline: none;
             }
         }
-        input[type=button]{
-            border: none;
-            padding: 10px 0;
-            border-radius: 10px;
-            background-color: palevioletred;
-            color: white;
-            //margin-left: 135px;
-            cursor: pointer;
-            &:hover{
-                background-color: #db7093c7;
-            }
-            &:focus{
-                outline: none;
-            }
-            &.btn_check_id{
-                width: 100px;
-                margin-left: 20px;
-            }
-            &.btn_terms{
-                width: 80px;
-            }
-            &.btn_signup{
-                width: 200px;
-            }
-        }
         input[type=checkbox]{
             margin-left: 20px;
             height: 50px;
         }
         &.div_agree{
             justify-content: flex-end;
+        }
+        &.div_save{
+            justify-content: center;
         }
     }
     .no_margin{

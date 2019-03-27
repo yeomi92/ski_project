@@ -9,7 +9,7 @@
     <div class="list_body" v-show="bodyList.length>0">
         <div class="list_tr" v-for="(body,index) in bodyList" :key="index"> 
             <div class="list_td list_no">{{startNo-index}}</div>
-            <div class="list_td" v-for="(cell,i) in cellFilters" :key="i" :style="dynamicStyle(i)">{{body[cell.key]}}</div>
+            <div class="list_td" v-for="(cell,i) in cellFilters" :key="i" :style="dynamicStyle(i)" @click="cell.click(body)">{{body[cell.key]}}</div>
         </div>
     </div>
 </div>

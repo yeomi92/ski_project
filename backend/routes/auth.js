@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const member = require('../member.json');
 const User = require('../models/user');
 const crypto = require('crypto')
 

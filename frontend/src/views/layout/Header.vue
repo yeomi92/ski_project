@@ -20,11 +20,9 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import { clearAuthInfo, cookieGetAuthInfo, isLogined } from '@/utils/auth'
-import InputButton from '@/components/ui/Button.vue'
 export default {
   name: "Header",
   components: {
-    InputButton
   },
   computed: {
     ...mapGetters({
@@ -61,7 +59,7 @@ export default {
     // if(isLogined()){
     //   this.setAuthInfo(cookieGetAuthInfo())
     // }
-    
+
     // TODO
     // 새로고침 경우 active 유지해야함
     // this.menus.map((i)=>{

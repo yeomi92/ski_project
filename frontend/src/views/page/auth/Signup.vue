@@ -3,7 +3,11 @@
     <div class="no_margin">
       <label for="signup_id">id</label>
       <input id="signup_id" type="text" placeholder="id" v-model="form.id">
-      <input type="button" value="중복확인" class="btn_check_id" @click="checkId">
+      <input-button
+        :text="'중복확인'"
+        :width="'100px'"
+        @clicked="checkId"
+      ></input-button>
     </div>
     <p>
       <span :class="`${id?`green`:`red`}`">{{idMsg}}</span>
@@ -32,19 +36,31 @@
       <input id="signup_email" type="text" placeholder="email" v-model="form.email">
     </div>
     <div class="div_agree">
-      <input type="button" value="약관" @click="popup" class="btn_terms"/>
+      <input-button
+        :text="'약관'"
+        :width="'80px'"
+        @clicked="popup"
+      ></input-button>
       <input ic="signup_agree" type="checkbox" v-model="form.checkedAgree">
       <label for="signup_agree" class="label_agree">동의</label>
     </div>
-    <div>
-      <input type="button" value="가입" @click="signUp" class="btn_signup"/>
+    <div class="div_save">
+      <input-button
+        :text="'가입'"
+        :width="'200px'"
+        @clicked="signUp"
+      ></input-button>
     </div>
   </div>
 </template>
 <script>
 import {mapMutations} from 'vuex'
+import InputButton from '@/components/ui/InputButton'
 export default {
   name: 'Login',
+  components: {
+    InputButton
+  },
   data() {
     return {
       form: {
