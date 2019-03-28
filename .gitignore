@@ -1,5 +1,6 @@
 /node_modules
-/build
+/backend/node_modules
+/frontend/build
 /models
 
 *.env
