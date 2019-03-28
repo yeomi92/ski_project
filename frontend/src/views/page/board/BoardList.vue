@@ -5,7 +5,7 @@
             <serach-input
                 :search="search"
             />
-            <div>
+            <div v-show="authInfo.active">
                 <input-button
                     :text="'글쓰기'"
                     :width="'100px'"
@@ -65,7 +65,7 @@ export default {
                     { value: '', text: 'All' },
                     { value: 'title', text: 'Title' },
                     { value: 'content', text: 'Content' },
-                    { value: 'auth', text: 'Auth' }
+                    { value: 'author', text: 'Author' }
                 ]
             },
             width: [20,30,30,20,20,20],

@@ -1,6 +1,14 @@
 .search_input{
     margin-left: 10px;
     margin-bottom: 30px;
+    select{
+        height: 30px;
+        width: 100px;
+        &:focus{
+            outline: none;
+            border: 1px solid palevioletred;
+        }
+    }
     input[type=text],input[type=password]{
         border: none;
         border-bottom: 1px solid #666;

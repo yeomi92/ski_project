@@ -78,7 +78,8 @@ export default {
         update(){
             const params = {
                 title: this.item.title,
-                content: this.item.content
+                content: this.item.content,
+                mod_date: Date.now()
             }
             this.$http.put(`/api/board/update/${this.$route.params.id}`, params)
             .then((res) => {

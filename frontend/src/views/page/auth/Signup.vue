@@ -138,9 +138,11 @@ export default {
         alert('아이디 중복확인을 하세요')
       }else if(!this.pw){
         alert('비밀번호를 확인하세요')
-      } else if(!this.checkedAgree){
-        alert('약관을 동의하세요.')
-      }else if(this.id&&this.pw){
+      } 
+      // else if(!this.checkedAgree){
+      //   alert('약관을 동의하세요.')
+      // }
+      else if(this.id&&this.pw){
         const params = {
           params: {
             id: this.form.id,
