@@ -1,10 +1,10 @@
 <template>
     <div class="search_input">
-        <select>
-            <option v-for="(option, i) in search.options" :key="i" :value="option.value">{{option.text}}</option>
+        <select v-model="searchType.selected">
+            <option v-for="(option, i) in searchType.options" :key="i" :value="option.value">{{option.text}}</option>
         </select>
-        <input type="text" placeholder="search text" v-model="searchText">
-        <input type="button" value="search" @click="search">
+        <input type="text" placeholder="search text" v-model="search.text">
+        <input type="button" value="검색" @click="searchData">
     </div>
 </template>
 <script>
@@ -12,20 +12,21 @@ export default {
     name: 'SerachInput',
     data() {
         return {
-            searchText: '',
+            search: {
+                text: null,
+                type: null
+            }
         }
     },
     props: {
-        search: {
+        searchType: {
             Type: JSON
         }
     },
-    created() {
-        console.log('ui/SerachInput.vue')
-    },
     methods: {
-        search() {
-            alert(this.searchText)
+        searchData() {
+            this.search.type = this.searchType.selected
+            this.$emit('clicked', this.search)
         }
     }
 }

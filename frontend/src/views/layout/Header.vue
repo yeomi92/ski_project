@@ -53,35 +53,12 @@ export default {
       ]
     };
   },
-  created() {
-    console.log(this.$route)
-    console.log("layout/Header.vue");
-    // if(isLogined()){
-    //   this.setAuthInfo(cookieGetAuthInfo())
-    // }
-
-    // TODO
-    // 새로고침 경우 active 유지해야함
-    // this.menus.map((i)=>{
-    //   i.active=false
-    //   if(i.routeName===this.$route.name){
-    //     i.active=true
-    //     return
-    //   }
-    // })
-    // if(this.$route.name===null){
-    //     this.$route.name='Home'
-    //   }
-  },
-  mounted () {
-  },
   methods: {
     ...mapMutations({
       clearAuthInfo: 'clearAuthInfo',
       setAuthInfo: 'setAuthInfo'
     }),
     logout() {
-      console.log('로그아웃클릭')
       clearAuthInfo()
       this.clearAuthInfo()
       this.$router.push({

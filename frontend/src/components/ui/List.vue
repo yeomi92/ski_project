@@ -6,9 +6,9 @@
             <div class="list_th" v-for="(head, i) in headList" :key="i" :style="dynamicStyle(i)">{{head.text}}</div>
         </div>
     </div>
-    <div class="list_body" v-show="bodyList.length>0">
+    <div class="list_body" v-if="bodyList.length>0">
         <div class="list_tr" v-for="(body,index) in bodyList" :key="index"> 
-            <div class="list_td list_no">{{startNo-index}}</div>
+            <div class="list_td list_no">{{setIndexNum(index)}}</div>
             <div class="list_td" v-for="(cell,i) in cellFilters" :key="i" :style="dynamicStyle(i)" @click="cell.click(body)">{{body[cell.key]}}</div>
         </div>
     </div>
@@ -38,8 +38,8 @@ export default {
             type: Array,
             required: true
         },
-        startNo: {
-            type: Number,
+        pagingData: {
+            type: Object,
             required: true
         }
     },
@@ -59,6 +59,9 @@ export default {
                 width: this.width[i]+'%',
                 'text-align': this.align[i]
             }
+        },
+        setIndexNum (index) {
+            return (this.pagingData.total_cnt - (this.pagingData.page_num - 1) * this.pagingData.row_num) - index
         }
     }
 

@@ -22,8 +22,9 @@
         -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
         .header{
-            background: antiquewhite;
+            background: #b9b6b2;
             height: 40px;
+            color: white;
             .title{
                 text-align: center;
                 line-height: 40px;
@@ -38,9 +39,8 @@
             }
         }
         .body{
-            width: 90%;
-            height: 100px;
             margin: 0 auto;
+            padding: 30px;
         }
     }
 }

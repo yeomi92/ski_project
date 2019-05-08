@@ -28,7 +28,6 @@ export default {
     name: 'Paging',
     created() {
         console.log('ui/Paging.vue');
-        console.log(this.$route);
     },
     props: {
         page_num: {
@@ -51,7 +50,6 @@ export default {
             for (let i = 0; i < 10; i++) {
                 arr[i] = startNum++;
             }
-            console.log(arr)
             return arr;
         }
     },

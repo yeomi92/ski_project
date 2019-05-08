@@ -18,10 +18,12 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import TermsOfSignup from '@/views/popup/TermsOfSignup'
+import BoardDetailForm from '@/views/popup/board/BoardDetailForm'
 export default {
     name: 'Popup',
     components: {
-        TermsOfSignup
+        TermsOfSignup,
+        BoardDetailForm
     },
     computed: {
         ...mapGetters({

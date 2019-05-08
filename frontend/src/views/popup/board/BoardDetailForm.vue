@@ -1,10 +1,7 @@
 <template>
     <div class="board_detail">
-        <div>
-            <div class="title">
-                상세보기
-            </div>
-            <div class="body">
+        <div class="board_detail__form">
+            <div class="board_detail__form__info">
                 <div>
                     <div class="th">title</div>
                     <div class="td"><input type="text" v-model="item.title" :disabled="!isAuthor"></div>
@@ -30,46 +27,56 @@
                     <div class="td">{{item.mod_date.split('T')[0]}}</div>
                 </div>
             </div>
-            <div class="btn" v-show="isAuthor">
+            <div class="board_detail__form__btn" v-show="isAuthor">
                 <input type="button" value="저장" @click="update">
             </div>
         </div>
     </div>
 </template>
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapMutations} from 'vuex'
 export default {
     name: 'BoardDetail',
+    // props: {
+    //     props: {
+    //         type: Object,
+    //         required: true
+    //     }
+    // },
     data(){
         return {
-            item: {},
+            item: {
+                title: '',
+                author: {
+                    id: '',
+                },
+                views: 0,
+                content: '',
+                create_date: '',
+                mod_date: ''
+            },
             isAuthor: false
         }
     },
     computed: {
         ...mapGetters({
-            authInfo: 'authInfo'
+            authInfo: 'authInfo',
+            props: 'popup/props'
         })
     },
     mounted () {
-        this.getItem();
-    },
-    watch: {
-        '$route' (to, from){
-            this.$router.push({
-                params: {
-                    id: to.params.id
-                }
-            })
-            this.getItem();
-        }
     },
     created(){
-        console.log('BoardDetail.vue');
+        console.log('BoardDetailForm.vue');
+        this.getItem();
     },
     methods: {
+        ...mapMutations({
+            popupClose: 'popup/close'
+        }),
         getItem () {
-            this.$http.get(`/api/board/detail/${this.$route.params.id}`)
+            let id = this.props.item._id
+            this.$http.get(`/api/board/detail/${id}`)
             .then((res) => {
                 this.item = res.data.item[0]
                 this.isAuthor = this.authInfo.id === this.item.author.id
@@ -81,10 +88,12 @@ export default {
                 content: this.item.content,
                 mod_date: Date.now()
             }
-            this.$http.put(`/api/board/update/${this.$route.params.id}`, params)
+            this.$http.put(`/api/board/update/${this.props.item._id}`, params)
             .then((res) => {
                 console.log(res)
-                this.content = res.data;
+                //this.content = res.data;
+                this.popupClose()
+                this.props.reload()
             });
         }
     }

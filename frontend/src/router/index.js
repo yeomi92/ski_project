@@ -15,9 +15,13 @@ const requireAuth = ()=> (to, from, next) => {
   }
 }
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
+    {
+      path: '*',
+      component: ()=>import('@/views/page/error/Error404')
+    },
     {
       path: '',
       name: 'Main',
@@ -101,8 +105,13 @@ export default new Router({
           ]
         }
       ]
-    },
-   
-    
+    }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log('router beforeEach')
+  next()
+})
+
+export default router

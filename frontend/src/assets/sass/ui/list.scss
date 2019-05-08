@@ -6,9 +6,9 @@ $list-height: $column-height*12;
     flex-direction: column;
     min-height: $list-height;
     .list_head{
-        border-bottom: 2px solid palevioletred;
+        border-bottom: 2px solid $pink;
         font-weight: bold;
-        background-color: #db709378;
+        background-color: $dark-pink;
         color: white;
         line-height: $column-height;
     }

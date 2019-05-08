@@ -3,7 +3,8 @@
     <div class="list_table">
         <div class="head">
             <serach-input
-                :search="search"
+                :searchType="search"
+                @clicked="searchData"
             />
             <div v-show="authInfo.active">
                 <input-button
@@ -19,7 +20,7 @@
             :headList="headList"
             :bodyList="list"
             :cellFilters="cellFilters"
-            :startNo="startNo"
+            :pagingData="pagingData"
         ></list>
         <paging
             v-if="list.length > 0"
@@ -32,11 +33,12 @@
 </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import SearchInput from '@/components/ui/SearchInput'
 import List from '@/components/ui/List'
 import Paging from '@/components/ui/Paging'
 import InputButton from '@/components/ui/InputButton'
+import ListMixin from '@/mixins/ListMixin'
 export default {
     name: 'BoardList',
     components: {
@@ -45,20 +47,13 @@ export default {
         List,
         InputButton
     },
+    mixins: [
+        ListMixin
+    ],
     data(){
         return {
             msg: '게시판 페이지',
-            list:[],
-            pagingData: {
-                //media_code: null,
-                //status: null,
-                page_num: 1, //현재 페이지
-                row_num: 10, //몇개씩 보여줄 것인지
-                //sort_column: 'name', //정렬 기준 컬럼
-                sort_type: 'ASC', //내림차순, 오름차순
-                total_cnt: null, 
-                total_page_num: null
-            },
+            list: [],
             search: {
                 selected: '',
                 options: [
@@ -94,6 +89,9 @@ export default {
     },
     watch: {
         '$route' (to, from) {
+            console.log('watch')
+            console.log(to)
+            console.log(from)
             this.setPagingData({
                 //status: !to.query.status ? null : to.query.status,
                 //media_code: !to.query.media_code ? null : to.query.media_code,
@@ -103,71 +101,89 @@ export default {
                 //sort_column: !to.query.sort_column ? 'name' : to.query.sort_column,
                 sort_type: !to.query.sort_type ? 'ASC' : to.query.sort_type
             })
-
             //this.header.selectStatus.selectedValue = this.pagingData.status
             //this.header.selectMedia.selectedValue = this.pagingData.media_code
-
-            //this.getWorkUnits()
             this.getList();
         }
     },
     computed: {
         ...mapGetters({
             authInfo: 'authInfo'
-        }),
-        startNo() {
-            let data = this.pagingData;
-            return data.total_cnt - (data.page_num - 1) * data.row_num
-        }
+        })
     },
     created(){
-        console.log('BoardList.vue');
-        this.getList();
+        this.getTotalListLength()
     },
     methods: {
-        getList () {
-            console.log('getList()')
-            let page = this.$route.params.page;
-            this.$http.get(`/api/board/${page}`)
+        ...mapMutations({
+            popupShow: 'popup/show'
+        }),
+        getTotalListLength (params) {
+            this.$http.get('/api/board', {params: params})
             .then((res) => {
-                console.log(res)
-                let list = res.data.list
-                this.list = list
-                this.list.map((l) => {
-                    l.author = `${l.author.nickname}(${l.author.id})`
-                    l.create_date = l.create_date.split('T')[0]
-                    l.mod_date = l.mod_date.split('T')[0]
-                })
-                this.pagingData.total_cnt = list.length
-                this.pagingData.total_page_num = Math.ceil(list.length/10)
+                this.pagingData.total_cnt = res.data.count
+                this.pagingData.page_num = this.$route.params.page
+                this.pagingData.row_num = 10
+                this.getList(params)
+            })
+        },
+        getList (params) {
+            let page = this.$route.params.page;
+            this.$http.get(`/api/board/${page}`, {params: params})
+            .then((res) => {
+                this.setList(res.data.list)
+                
             });
         },
         goDetail (item) {
-            console.log('goDetail');
+            console.log('item', item)
             const params = {
                 views: ++item.views
             }
             this.$http.put(`/api/board/update/${item._id}`, params)
             .then((res) => {
-                console.log(res)
-                this.$router.replace({
-                    name: 'BoardDetail',
-                    params: {
-                        id: item._id
+                // this.$router.replace({
+                //     name: 'BoardDetail',
+                //     params: {
+                //         id: item._id
+                //     }
+                // })
+                this.popupShow({
+                    title: '상세보기',
+                    useComponent: 'BoardDetailForm',
+                    props: {
+                        item: item,
+                        reload: this.getList
                     }
                 })
             })
-        },
-        setPagingData (payload) {
-            //보여지는 페이지를 세팅해주는 데이터(status, media_code, page_num, row_num, sort_column, sort_type, total_page_num)
-            Object.keys(payload).forEach(key => {
-                this.pagingData[key] = payload[key]
-            })
+            
         },
         goWriting () {
             this.$router.push({
                 name: 'BoardWriting'
             })
+        },
+        searchData (value) {
+            let page = this.$route.params.page;
+            const params = {
+                type: value.type,
+                text: value.text
+            }
+            this.getTotalListLength(params)
+        },
+        setList (res) {
+            if(res.length > 0) {
+                this.list = res
+                this.list.map((l) => {
+                    l.author = `${l.author.nickname}(${l.author.id})`
+                    l.create_date = l.create_date.split('T')[0]
+                    l.mod_date = l.mod_date.split('T')[0]
+                })
+                this.pagingData.total_page_num = Math.ceil(this.pagingData.total_cnt/10)
+            } else {
+                this.list
+            }
         }
     }
 }

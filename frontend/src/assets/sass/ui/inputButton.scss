@@ -2,11 +2,11 @@
     border: none;
     padding: 10px 0;
     border-radius: 10px;
-    background-color: palevioletred;
+    background-color: $pink;
     color: white;
     cursor: pointer;
     &:hover{
-        background-color: #db7093c7;
+        background-color: $dark-pink;
     }
     &:focus{
         outline: none;

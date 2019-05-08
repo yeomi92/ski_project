@@ -11,13 +11,15 @@ export default {
     getters: {
         show: state => state.show,
         title: state => state.title,
-        useComponent: state => state.useComponent
+        useComponent: state => state.useComponent,
+        props: state => state.props
     },
     mutations: {
         show(state, payload) {
             state.show = true,
-            state.title = payload.title,
-            state.useComponent = payload.useComponent
+            state.title = payload.title || state.title,
+            state.useComponent = payload.useComponent || state.useComponent,
+            state.props = payload.props || {}
         },
         close(state){
             state.show = false,

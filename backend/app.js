@@ -11,9 +11,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+var io = require('socket.io')
+
 //vue에 데이터를 전달할 테스트 라우터
-var moviesRouter = require('./routes/movies');
 var boardRouter = require('./routes/board');
 var authRouter = require('./routes/auth');
 var snsRouter = require('./routes/sns');
@@ -45,9 +46,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-//
-app.use('/api/movies', moviesRouter);
 app.use('/api/board', boardRouter)
 app.use('/api/sns', snsRouter)
 app.use('/api/auth', authRouter)
